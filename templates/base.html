@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+<style>
+        * {
+            font-family: 'Raleway', sans-serif;
+        }
+        html {
+            background-color: #fff;
+        }
+        body {
+            background-color: #fff;
+        }
+        a.user-list-item, a.user-list-item:hover, a.user-list-item:visited {
+            color: black;
+            text-decoration: none;
+        }
+        .border-bottom {
+            border-bottom: 1px solid #999!important;
+        }
+    </style>
+
+<head>
+    <meta charset="UTF-8">
+     <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+    Here goes content
+{% endblock content %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
