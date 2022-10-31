@@ -14,5 +14,15 @@ User list
     <li> <a href="{% url 'firstapp:user_detail' user.id %}"> {{ user.name }} </a></li>
 {% endfor %}
 </ul>
+<ul>
+{% for post in posts %}
+    <li> <a href="{% url 'firstapp:post_detail' pk=post.pk %}"> {{ post.title }} </a></li>
+    <div>
+        <p>
+          {{ post.author }}
+        </p>
+    </div>
+{% endfor %}
+</ul>
 
 {% endblock content %}

@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 
 from .forms import UserForm
-from .models import User
+from .models import User, Post
 
 
 # from firstapp.models
@@ -12,7 +12,8 @@ from .models import User
 
 def my_first_view(request):
     users = User.objects.all()
-    return render(request, 'user_list.html', context={'users': users})
+    posts = Post.objects.all()
+    return render(request, 'user_list.html', context={'users': users, 'posts': posts})
 
 
 
@@ -30,3 +31,7 @@ def user_detail(request, pk):
     })
 
 #{% url "firstapp:user_create" %}
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'post_detail.html', {'post': post})
