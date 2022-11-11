@@ -1,9 +1,12 @@
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
+from time import timezone
 
-from .forms import UserForm
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, HttpResponseRedirect, request, JsonResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
+from .forms import PostForm
+from django.views.generic.edit import FormView, CreateView
+
 from .models import User, Post
 
 
@@ -35,3 +38,20 @@ def user_detail(request, pk):
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'post_detail.html', {'post': post})
+
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = '__all__'
+    template_name = 'post_create.html'
+
+    def get_success_url(self):
+        return reverse_lazy('firstapp:post_detail', kwargs={'pk': self.object.id})
+
+
+
+
+
+
+
+

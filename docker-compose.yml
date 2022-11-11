@@ -15,11 +15,28 @@ services:
     build: .
     volumes:
       - .:/src/
+      - static:/static
+      - media:/media
     depends_on:
       - db
+    environment:
+        DJANGO_SETTINGS_MODULE: 'settings.dev'
+        PY_AUTORELOAD: 1
+    command: /bin/bash -c 'pip install -r requirements.txt && invoke run'
+
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - static:/static:ro
+      - media:/media
+    links:
+      - web
     ports:
-      - 8000:8000
-    command: "python ./manage.py runserver 0.0.0.0:8000"
+      - 8000:80
 
 volumes:
   pgdata: { }
+  static: { }
+  media: { }

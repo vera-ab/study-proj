@@ -7,13 +7,27 @@ User list
     <h3>
        User: {{ request.user.name }}
     </h3>
-    <a href="{% url "accounts:logout" %}"> log out </a>
-     <a href="{% url "accounts:login" %}"> log in </a>
-<ul>
+    <a href="{% url 'accounts:logout' %}"> log out </a><br>
+    <a href="{% url 'accounts:login' %}"> log in </a>
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+
 {% for user in users %}
-    <li> <a href="{% url 'firstapp:user_detail' user.id %}"> {{ user.name }} </a></li>
+        <div class="col">
+    <div class="card" style="width: 18rem; padding: 25px; margin: 50px;">
+  <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><a href="{% url 'firstapp:user_detail' user.id %}"> {{ user.name }} </a></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="{% url 'firstapp:user_detail' user.id %}" class="btn btn-primary">more</a>
+  </div>
+</div>
+</div>
 {% endfor %}
-</ul>
+</div>
+</div>
+
+
 <ul>
 {% for post in posts %}
     <li> <a href="{% url 'firstapp:post_detail' pk=post.pk %}"> {{ post.title }} </a></li>
